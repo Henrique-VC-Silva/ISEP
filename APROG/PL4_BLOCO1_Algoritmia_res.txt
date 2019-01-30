@@ -1,0 +1,636 @@
+--- EX1 ---
+a)
+
+ED: num, alg, somaPares INTEIRO
+
+INÍCIO
+
+	somaPares = 0
+
+	REPETE
+		LER(num)
+	ENQUANTO(num <= 0)
+
+	REPETE
+		alg = num MOD 10
+		SE(alg MOD 2 == 0)
+		  somaPares = somaPares + alg
+		FIMSE
+		num = num DIV 10
+	ENQUANTO(num > 0)
+
+	ESCREVER('A soma dos algarismos pares é: ' + somaPares)
+
+FIM
+
+b)
+
+ED: num, alg, somaPares
+
+INÍCIO
+
+	somaPares = 0
+
+	LER(num)
+
+	ENQUANTO(num > 0)
+  
+		REPETE
+			alg = num MOD 10
+			SE(alg MOD 2 == 0)
+				somaPares = somaPares + alg
+			FIMSE
+			num = num DIV 10
+		ENQUANTO(num > 0)
+
+		ESCREVER('A soma dos algarismos pares é: ' + somaPares)
+		
+		LER(num)
+  
+	FIMENQUANTO
+
+FIM
+
+--- EX2 ---
+a)
+
+ED: num, alg, multImpares INTEIRO
+
+INÍCIO
+
+multImpares = 0
+
+	REPETE
+		LER(num)
+	ENQUANTO(num <= 0)
+
+	REPETE
+		alg = num MOD 10
+		SE(alg MOD 2 != 0)
+			multImpares = multImpares * alg
+		FIMSE
+		num = num DIV 10
+	ENQUANTO(num > 0)
+
+	ESCREVER('O produto dos algarismos impares é: ' + multImpares)
+
+FIM
+
+b)
+
+ED: num, alg, multImpares
+
+INÍCIO
+
+  multImpares = 0
+
+  LER(num)
+  
+  ENQUANTO(num > 0)
+  
+	REPETE
+		alg = num MOD 10
+		SE(alg MOD 2 != 0)
+		  multImpares = multImpares * alg
+		FIMSE
+		num = num DIV 10
+	ENQUANTO(num > 0)
+
+	ESCREVER('O produto dos algarismos impares é: ' + multImpares)
+
+	LER(num)
+	
+  FIMENQUANTO
+  
+FIM
+
+--- EX3 ---
+
+a)
+
+ED:										
+num, num1, dig INTEIRO					
+ALG										
+INÍCIO										
+LER(num)						|15				|				|
+num1 <- 0						|0				|				|
+ENQUANTO (num <> 0)				|V				|V				|F
+dig <- num MOD 10				|dig=5			|dig=1			|
+num1 <- num1 * 10 + dig			|num1=0*10+5=5	|num1=5*10+1=51	|
+num <- num DIV 10				|num=1			|num=0			|
+FIMENQUANTO						|				|				|
+ESCREVER("Resultado=” , 2*num1)	|				|				|resultado=2*51=102				
+FIM
+
+Calcua o dobro do numero invertido do inserido
+
+b)
+
+ED:
+	num, num1, dig INTEIRO
+	
+ALG
+
+INÍCIO
+
+
+ REPETE
+	ESCREVER("Introduza um numero multiplo de 2 mas nao de 3.")
+	LER(num)
+ EMQUANTO(num MOD 2 = 0 AND num MOD 3 != 0)
+ 
+ num1 <- 0
+ 
+ ENQUANTO (num <> 0)
+	dig <- num MOD 10
+	num1 <- num1 * 10 + dig
+	num <- num DIV 10
+ FIMENQUANTO
+ 
+ ESCREVER("Resultado=” , 2*num1)
+FIM
+
+--- EX4 ---
+
+a)
+
+ED:
+num, num1, dig, ord INTEIRO
+ALG
+INÍCIO
+LER(num)								|num=1256			|num=125			|					|			|
+num1 <- 0; ord<-0						|num1=0; ord=0		|					| 					|			|
+ENQUANTO (num <> 0)						|V|V				|V					|V					|V			|F
+digito <- num MOD 10					|digito=6			|digito=5			|digito=2			|digito=1	|
+SE (dig MOD 2 = 0) ENTÂO				|V|F				|F					|V					|F			|
+num1 <- num1 + dig * potencia(10,ord)	|num1=0+6*10^0=6	|					|num1=6+2*10^1=26	|			|
+ord<- ord+1								|ord=0+1=1			|					|ord=0+1			|			|
+FIMSE									|					|					|					|			|
+num <- num DIV 10						|num=125			|num=12				|num=1				|num=0		|
+FIMENQUANTO								|					|					|					|			|
+ESCREVER("Resultado=” num1)				|					|					|					|			|resultado=2
+FIM
+
+O algoritmo escreve só os numeros pares do numero inserido
+
+b)
+
+ED:
+	num, num1, dig, ord INTEIRO
+	
+ALG
+
+INÍCIO
+
+	REPETE
+		ESCREVER("Introduza um numero com 3 ou mais algarismos e menos que 5.")
+		LER(num)
+	EMQUANTO(num DIV 100 >0 AND num DIV 10000 = 0)
+
+	num1 <- 0; ord<-0
+	
+	ENQUANTO (num <> 0)
+		dig <- num MOD 10
+		SE (dig MOD 2 = 0) ENTÂO
+			num1 <- num1 + dig * potencia(10,ord)
+			ord<- ord+1
+		FIMSE
+		num <- num DIV 10
+	FIMENQUANTO
+	
+	ESCREVER("Resultado=” num1)
+FIM
+
+--- EX5 ---
+a)
+ED:
+	num8, num10, alg, ord INTEIRO
+
+ALG
+
+INICIO
+
+	ord <-0, num10 <- 0
+	
+	REPETE
+		ESCREVER("Introduza um numero octal.")
+		LER(num8)
+	EMQUANTO(num8 <= 0))
+	
+	ENQUANTO(num8 > 0)
+		alg = num8 MOD 10
+		num10 = num10 + alg * 8^ordem
+		ordem = ordem + 1
+		num8 = num8 DIV 10
+	FIMENQUANTO
+
+	ESCREVER('O número em base 10 é:' num10)
+
+FIM	
+
+b)
+ED:
+	num, num10, alg, ord, base INTEIRO
+
+ALG
+
+INICIO
+
+	ord <-0, num10 <- 0
+	
+	REPETE
+		ESCREVER("Introduza um numero e a base.")
+		LER(num, base)
+	EMQUANTO(num <= 0 OR (base >= 0 AND base < 10))
+	
+	ENQUANTO(num > 0)
+		alg = num MOD 10
+		num10 = num10 + alg * base^ordem
+		ordem = ordem + 1
+		num = num DIV 10
+	FIMENQUANTO
+
+	ESCREVER('O número em base 10 é:', num10)
+
+FIM	
+
+--- EX 6 ---
+a)
+ED: 
+	num10, num8, alg, ordem INTEIRO
+
+INÍCIO
+  
+	num8 <- 0, ordem <- 0
+
+	REPETE
+		ESCREVER("Introduza um numero decimal.")
+		LER(num10)
+	ENQUANTO(num10 <= 0)
+  
+	ENQUANTO(num10 > 0)
+		alg = num10 MOD 8
+		num8 = num8 + alg * 10^ordem
+		ordem = ordem + 1
+		num10 = num10 DIV 8
+	FIMENQUANTO
+	
+	ESCREVER('O número em base 8 é:', num8)
+	
+FIM
+
+b)
+
+ED: 
+	num10, num, alg, ordem, base INTEIRO
+
+INÍCIO
+  
+	num <- 0, ordem <- 0
+
+	REPETE
+		ESCREVER("Introduza um numero decimal e a base para converter.")
+		LER(num10, base)
+	ENQUANTO(num10 <= 0 OR (base >= 0 AND base < 10))
+  
+	ENQUANTO(num10 > 0)
+		alg = num10 MOD base
+		num = num + alg * 10^ordem
+		ordem = ordem + 1
+		num10 = num10 DIV base
+	FIMENQUANTO
+	
+	ESCREVER("O número em base", base, "é:", num)
+	
+FIM
+
+--- EX7 ---
+
+ED:
+	num1, num2, num3, alg INTEIRO
+	
+ALG
+
+INICIO
+
+	REPETE
+		ESCREVER("Introduza um numero inteiro positivo com 2 ou mais algarismos")
+		LER(num1)
+	ENQUANTO(num1 < 10)
+	
+	num3 = num1
+	
+	ENQUANTO (num1 != 0)	
+		alg = num1 MOD 10
+		num2 = num2 * 10 + alg	
+		num1 = num1 DIV 10		
+	FIMENQUANTO
+	
+	SE( num2 == num3)
+		ESCREVER("O numero é capicua.")
+	SENAO
+		ESCREVER("O numero nao é capicua")
+	FIMSE	
+	
+FIM
+
+--- EX8 ---
+
+ED:
+	maxNum, num, minAlg INTEIRO
+	
+ALG:
+
+INICIO
+
+	nimAlg = 9
+	
+	ESCREVER("Introduza um numero inteiro")
+	LER(num)
+	maxNum = num
+	
+	ENQUANTO(num != 0)
+		SE(num > maxNum)
+			maxNum = num
+		FIMSE
+		
+		ESCREVER("Introduza um numero inteiro")
+		LER(num)
+	FIMENQUANTO
+
+	ENQUANTO (maxNum != 0)	
+		alg = maxNum MOD 10
+		SE (alg < minAlg)
+			minAlg = alg
+		FIMSE
+		maxNum = maxNum DIV 10		
+	FIMENQUANTO
+	
+	ESCREVER("O menor algarismo é", minAlg)
+	
+FIM
+
+--- EX9 ---
+
+ED:
+	num, div, contDiv INTEIRO
+
+ALG
+
+INICIO
+	
+	contDiv = 0
+	
+	REPETE
+		ESCREVER("Introduza um numero inteiro positivo.")
+		LER(num)
+	ENQUANTO(num<=0)
+	
+	PARA(div=num ATE 1 PASSO -1)
+		SE(num MOD div = 0)
+			ESCREVER(div)
+			contDiv = contDiv + 1
+		FIMSE
+	FIMPARA
+	
+	ESCREVER("Quantidade de divisores:", contDiv)
+
+FIM
+
+--- EX10 ---
+
+ED:
+	num, div, contDiv INTEIRO
+
+ALG
+
+INICIO
+	
+	contDiv = 0
+	
+	REPETE
+		ESCREVER("Introduza um numero inteiro positivo.")
+		LER(num)
+	ENQUANTO(num<=0)
+	
+	PARA(div=num ATE 1 PASSO -1)
+		SE(num MOD div = 0)
+			contDiv = contDiv + 1
+		FIMSE
+	FIMPARA
+	
+	SE(contDiv = 2)
+		ESCREVER("O numero é primo")
+	SENAO
+		ESCREVER("O numero nao e primo.")
+	FIMSE
+
+FIM
+
+--- EX11 ---
+
+ED:
+	num1, num2, multiplo, cont INTEIRO
+
+ALG
+
+INÍCIO
+
+  multiplo = 0
+  cont = 1
+
+  REPETE
+  	ESCREVER("Introduza um numero inteiro positivo.")
+    LER(num1, num2)
+  ENQUANTO(num1 <= 0 OR num2 <= 0)
+  
+  ENQUANTO(multiplo = 0)
+    SE(num1 MOD cont == 0 AND num2 MOD cont == 0)
+		multiplo = cont
+    FIMSE
+    cont = cont +1
+  FIMENQUANTO
+  
+  ESCREVER("O mínimo multiplo comum é", multiplo)
+  
+FIM
+
+
+--- EX12 ---
+
+ED:
+	num1, num2, divisor, cont, aux INTEIRO
+
+ALG
+
+INÍCIO
+
+	REPETE
+		ESCREVER("Introduza dois numeros inteiros positivos.")
+		LER(num1, num2)
+	ENQUANTO(num1 <= 0 OR num2 <= 0)
+
+	SE(num1>num2)
+		aux = num1
+		num1 = num2
+		num2 = aux
+	FIMSE
+	
+	cont = 0
+	
+	FAZER
+		divisor = num1 - cont
+		cont = cont + 1
+	ENQUANTO(num1 DIV divisor != 0 AND num2 DIV divisor != 0)
+	
+	ESCREVER("O maximo divisor comum entre os 2 número é", divisor)
+
+FIM
+
+--- EX13 ---
+ED:
+	num, aux, numMax, alg INTEIRO
+	multiplo BOOLEAN
+	
+ALG
+
+INICIO
+
+	numMax = 20
+	
+
+	REPETE
+		ESCREVER("Introduza um numero inteiro positivo.")
+		LER(num)
+		multiplo = TRUE
+		aux = num
+		
+		ENQUANTO(aux != 0 AND multiplo == TRUE)
+			alg = aux MOD 10
+			SE( num MOD alg == 0)
+				multiplo = TRUE
+			SENAO
+				multiplo = FALSE
+			FIMSE
+			aux = aux DIV 10
+		FIMENQUANTO
+		
+		SE(multiplo == TRUE)
+			ESCREVER("Numero multiplo dos seus algarismos!)
+		SENAO
+			ESCREVER("O numero nao e multiplo dos seus algarismos")
+		FIMSE
+		
+		numMax = numMax - 1
+	ENQUANTO(num<=0 OR numMax != 0)
+	
+FIM
+	
+--- EX14 ---
+ED:
+	num, soma, numMax INTEIRO
+	
+ALG
+
+INICIO
+
+	numMax = 20
+	
+	REPETE
+		ESCREVER("Introduza um numero inteiro positivo.")
+		LER(num)
+		soma = 0
+		
+		ENQUANTO(num != 0)
+			soma = soma + (num MOD 10)
+			num = num DIV 10
+		FIMENQUANTO
+		
+		numMax = numMax - 1
+	ENQUANTO(soma MOD 2 == 0 OR numMax != 0)
+	
+	ESCREVER("Fim programa")
+	
+FIM
+	
+--- EX15 ---
+
+ED:
+	num, aux, alg, n, cont, contTotal INTEIRO
+	perc, percMax REAL
+	
+ALG
+
+INICIO
+
+	REPETE
+		ESCREVER("Insira quantos numeros sao.")
+		LER(n)
+	ENQUANTO(n<=0)
+	
+	percMax = 0
+	
+	PARA(cont = 0 ATE n PASSO 1)
+		ESCREVER("Insira um numero positivo.")
+		LER(num)
+		
+		aux = num
+		cont = 0
+		contTotal = 0
+		
+		ENQUANTO(aux != 0)
+			alg = aux MOD 10
+			contTotal = contTotal + 1
+			SE(num MOD alg == 0)
+				cont =cont + 1
+			FIMSE
+			aux = aux DIV 10
+		FIMENQUANTO
+		
+		perc = cont/contTotal
+		
+		SE(perc > percMax)
+			percMax = perc
+		FIMSE
+		
+		ESCREVER("Numero:", num, "Percentagem de algarismos divisores:", perc)
+	FIMPARA
+	
+	ESCREVER("maior percentagem:", percMax)
+	
+FIM
+
+--- EX16 ---
+
+ED:
+	n, i, j INTEIRO
+	primo BOOLEAN
+	
+ALG
+
+INICIO
+
+	REPETE
+		ESCREVER("Insira o numero maximo.")
+		LER(n)
+	ENQUANTO(n<=0)
+	
+	PARA(i=1 ATE n PASSO 1)
+	
+		primo = true
+	  
+		PARA(j = 2 ATE i - 1 PASSO 1)
+
+			SE(i MOD j == 0)
+				primo = false
+			FIMSE
+
+		FIMPARA
+
+		SE(primo == true)
+			ESCREVER("O número" i "é um número primo.")
+		FIMSE
+  
+	FIMPARA
+
+FIM

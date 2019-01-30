@@ -1,0 +1,349 @@
+--- EX1 ---
+
+b)
+
+ED:
+	nota1, nota2, nota3, peso1, peso2, peso3 INTEIRO
+	mediaPesada REAL
+	
+ALG:
+
+INICIO
+
+	LER(nota1, nota2, nota3)
+	LER(peso1, peso2, peso3)
+	
+	mediaPesada <- (nota1*peso1+ nota2*peso2+ nota3*peso3) /(peso1+peso2+peso3)
+	
+	ESCREVER(mediaPesada)
+	
+	SE( mediaPesada >= 8)
+		ESCREVER("O aluno cumpre a nota minima")
+		
+		SENAO
+		ESCREVER("O aluno não cumpre a nota minima")
+	
+	FIMSE	
+	
+FIM
+
+--- EX2 ---
+
+ED:
+	num, dig1, dig2, dig3 INTEIRO
+
+ALG:
+
+INICIO
+	LER(num)
+	SE (num <100 OU num >999)
+		ENTÃO
+		ESCREVER(“Número não tem 3 dígitos”)
+	SENÃO
+		dig3 <- num MOD 10
+		dig2 <- (num DIV 10) MOD 10
+		dig1 <- (num DIV 100) MOD 10
+		ESCREVER(dig1, “ ”, dig2, “ ”, dig3)
+		SE(num MOD 2 = 0)
+			ESCREVER("O numero é par")
+		SENAO
+			ESCREVER(O numero é impar")
+		FIMSE
+		
+	FIMSE
+FIM
+
+--- EX3 ---
+
+ED:
+	alg1, alg2, alg3, alg4, numero INTEIRO
+	
+ALG:
+
+INICIO
+	numero <- 0
+	
+	ESCREVER("Introduza um algarismo impar")
+	LER(alg1)
+	
+	SE(alg1 MOD 2 != 0 AND alg1 < 1)
+		ESCREVER("Introduza outro algarismo impar")
+		LER(alg2)
+		
+		SE(alg2 MOD 2 != 0)
+			ESCREVER("Introduza outro algarismo impar")
+			LER(alg3)
+			
+			SE(alg3 MOD 2 != 0)
+				ESCREVER("Introduza outro algarismo impar")
+				LER(alg4)
+				
+				SE(alg4 MOD 2 != 0 AND alg4 < 1)
+					numero <- alg1*1000+alg2*100+alg3*10+alg4
+					
+				FIMSE
+				
+			FIMSE
+			
+		FIMSE
+	
+	FIMSE
+	
+	SE(numero = 0)
+		ESCREVER("Introduziu um algarismo par.")
+		
+		SENAO
+			ESCREVER("O numero introduzido foi", numero, " e o quadrado deste é", numero*numero)
+	FIMSE
+	
+FIM
+	
+
+		
+		
+--- EX4 ---
+
+ED:
+	dig1, dig2, dig3, numero INTEIRO
+	
+ALG:
+
+INICIO
+	numero <- -1
+	
+	LER(dig1)
+	SE(dig1 < 1)
+		ESCREVER("Algarismo menor que 1")
+	
+	SENAO
+		numero <- 0
+		LER(dig2)
+		SE(dig1 < dig2)
+			LER(dig3)
+			SE(dig2 < dig3)
+				numero <- dig1*100+dig2*10+dig3
+			FIMSE
+		FIMSE
+	FIMSE
+
+	SE( numero = 0)
+		ESCREVER("Os numeros devem de ser inseridos por ordem crescente")
+	SENAO
+		ESCREVER("O número introduzido foi:", numero)
+		ESCREVER("A raiz quadrada do número introduzido é:", numero^(0.5))
+	FIMSE
+FIM
+
+--- EX5 ---
+
+a) Classifica uma turma consoante a percentagem de alunos aprovados
+
+b)
+
+ED:
+	lim1, lim2, lim3, lim4, aprovados REAL
+	
+ALG
+
+INICIO
+
+	LER(lim1, lim2, lim3, lim4)
+	LER(aprovados)
+	SE (aprovados <0 OU aprovados >1) ENTÃO
+		ESCREVER(“Valor Inválido”)
+	SENÃO
+		SE (aprovados <lim1) ENTÃO
+			ESCREVER(“Turma Má”)
+		SENÃO
+			SE (aprovados <lim2) ENTÃO
+				ESCREVER(“Turma Fraca”)
+			SENÃO
+				SE (aprovados <lim3) ENTÃO
+					ESCREVER(“Turma Razoável”)
+				SENÃO
+					SE (aprovados <lim4) ENTÃO
+						ESCREVER(“Turma Boa”)
+					SENÃO
+						ESCREVER(“Turma Excelente”)
+					FIMSE
+				FIMSE
+			FIMSE
+		FIMSE
+	FIMSE
+	
+FIM
+
+--- EX6 ---
+
+ED:
+	precoNormal, precoSaldo REAL
+
+INÍCIO
+
+  LER(precoNormal)
+  
+  ENQUANTO(precoNormal <= 0)
+    ESCREVER("Preco introduzido incorrecto. Por favor introduza o preço novamente.")
+    LER(precoNormal)
+  FIMENQUANTO
+  
+  SE(precoNormal > 200)
+    precoSaldo = precoNormal * 0.4
+  FIMSE
+  
+  SE(precoNormal <= 200 AND precoNormal > 100)
+    precoSaldo = precoNormal * 0.6
+  FIMSE
+  
+  SE(precoNormal <= 100 AND precoNormal > 50)
+    precoSaldo = precoNormal * 0.7
+  FIMSE
+  
+  SE(precoNormal <= 50)
+    precoSaldo = precoNormal * 80
+  FIMSE
+  
+  ESCREVER("O preço do artigo em saldo é de", precoSaldo)
+  
+FIM
+
+--- EX7 ---
+
+a)
+ED:
+	lado1, lado2, lado3 REAL
+	
+ALG:
+
+INICIO
+	
+	ESCREVER("Insira o valor dos lados do triângulo.")
+	LER(lado1, lado2, lado3)
+	
+	SE(lado1 = lado2 AND lado2 = lado3)
+		ESCREVER("Triângulo equilátero.")
+	SENAO
+		SE(lado1 = lado2 OR lado1 = lado3 OR lado2 =lado3)
+			ESCREVER("Triângulo isósceles.")
+		SENAO
+			ESCREVER("Triângulo escaleno.")
+		FIMSE
+	FIMSE
+	
+FIM
+
+
+b)
+ED:
+	lado1, lado2, lado3 REAL
+	
+ALG:
+
+INICIO
+	
+	ESCREVER("Insira o valor dos lados do triângulo.")
+	LER(lado1, lado2, lado3)
+	
+	SE(lado1 < 0 OR lado2 < 0 OR lado3 < 0 OR lado1+lado2 < lado3 OR lado1+lado3 < lado2 OR lado2+lado3 < lado1)
+		ESCREVER("O triângulo é impossivél.")
+		
+	SENAO
+		SE(lado1 = lado2 AND lado2 = lado3)
+			ESCREVER("Triângulo equilátero.")
+		SENAO
+			SE(lado1 = lado2 OR lado1 = lado3 OR lado2 =lado3)
+				ESCREVER("Triângulo isósceles.")
+			SENAO
+				ESCREVER("Triângulo escaleno.")
+			FIMSE
+		FIMSE
+	FIMSE
+	
+FIM
+
+
+--- EX8 ---
+
+a)
+ED:
+	ang1, ang2, ang3 REAL
+	
+ALG:
+
+INICIO
+	
+	ESCREVER("Insira o valor dos ângulos do triângulo.")
+	LER(ang1, ang2, ang3)
+	
+	SE(ang1 = 90 OR ang2 = 90 OR ang3 = 90)
+		ESCREVER("Triângulo retangulo.")
+	FIMSE
+	
+	SE(ang1 > 90 OR ang2 > 90 OR ang3 > 90)
+		ESCREVER("Triângulo obtusângulo.")
+	FIMSE
+  
+	SE(ang1 < 90 AND ang2 < 90 AND ang3 < 90)
+		ESCREVER("Triângulo acutângulo.")
+	FIMSE
+  
+FIM
+
+b)
+ED:
+	ang1, ang2, ang3 REAL
+	
+ALG:
+
+INICIO
+	
+	ESCREVER("Insira o valor dos ângulos do triângulo.")
+	LER(ang1, ang2, ang3)
+	
+	SE(ang1+ang2+ang3 != 180)
+		ESCREVER("O triângulo é impossivél.")
+	SENAO
+		SE(ang1 = 90 OR ang2 = 90 OR ang3 = 90)
+			ESCREVER("Triângulo retangulo.")
+		FIMSE
+		
+		SE(ang1 > 90 OR ang2 > 90 OR ang3 > 90)
+			ESCREVER("Triângulo obtusângulo.")
+		FIMSE
+	  
+		SE(ang1 < 90 AND ang2 < 90 AND ang3 < 90)
+			ESCREVER("Triângulo acutângulo.")
+		FIMSE
+	FIMSE
+  
+FIM
+
+--- EX9 ---
+
+ED:
+	partidaH, partidaM, chegadaH, chegadaM, duracaoH, duracaoM INTEIRO
+	diaSeguinte Booleano
+	
+ALG
+
+INICIO
+	
+	diaSeguinte <- false
+	
+	chegadaM <- partidaM + duracaoM
+	chegadaH <- partidaH + duracaoH
+	
+	SE(chegadaM > 60)
+		chegadaM <- chegadaM - 60
+		chegadaH <- chegadaH + 1
+	FIMSE
+	
+	SE(chegadaH > 24)
+		chegadaH <- chegadaH - 24
+		diaSeguinte <- true
+	FIMSE
+	
+FIM
+
+--- EX10 ---
+

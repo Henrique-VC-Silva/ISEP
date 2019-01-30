@@ -1,0 +1,371 @@
+--- EX 1 ---
+
+a) Calcula o valor de num!. Não há garantias de o algoritmo ser finito. (ex: numero negativo nunca chega a 1 por incrementos de -1)
+
+ED:
+	i, res, num, x INTEIRO
+
+ALG:
+
+INICIO
+	LER(num)
+
+	PARA( i <-1, i<num, i <- i+1) 
+		res <- 1
+
+		PARA( x <- num ATÉ 1 PASSO -1) 
+			res <- res*x
+		FIMPARA
+
+		ESCREVER ("O resultado é:", res)
+		LER(num)
+
+	FIMPARA
+
+	escrever("Numero inserido inválido. Fim de programa")
+FIM
+
+b)É finito porque o valor inserido tem que ser maior ou igual a 1.
+
+ED:
+	res, num, x INTEIRO
+
+ALG:
+
+INICIO
+	LER(num)
+
+	ENQUANTO( num > 0) FAZER
+		res <- 1
+
+		PARA( x=0, x >1, x=x-1)
+			res <- res*x
+		FIMPARA
+
+		ESCREVER ("O resultado é:", res)
+		LER(num)
+
+	FIMENQUANTO
+
+	escrever("Numero inserido inválido. Fim de programa")
+FIM
+
+
+--- EX2 ---
+
+ED:
+	nota, numPositivas, somaNegativas REAL
+	nAlunos, numNegativas, i INTEIRO
+
+ALG:
+
+INICIO
+
+	numPositivas <- 0, numNegativas <- 0, somaNegativas <-0
+
+	REPETE
+		escrever("Insira o numero de alunos:")
+		ler(nAlunos)
+		
+	ENQUANTO(nAlunos <=0)
+	
+	PARA( i=0, i<=nAlunos, i=i+1)
+		REPETIR
+			ESCREVER("Inserir nota do aluno (0-20):")
+			LER(nota)
+		ENQUANTO(nota < 0 OR nota > 20)
+		
+		SE( nota >=10)
+			numPositivas = numPositivas + 1
+			
+			SENAO
+			somaNegativas <- somaNegativas + nota
+			numNegativas <- numNegativas + 1
+		FIMSE
+	FIMPARA
+	
+	ESCREVER("Percentagem de positivas:", (numPositivas/nAlunos)*100, "%")
+	
+	SE(numNegativas = 0)
+		ESCREVER("Não houve negativas.")
+		
+		SENAO
+		ESCREVER("Média das notas negativas:", somaNegativas/numNegativas)
+	FIMSE
+	
+FIM
+
+--- EX3 ---
+
+ED: 
+	num, somaImp REAL
+	contPares, contImpares INTEIRO
+
+ALG:
+
+INÍCIO
+	contImpares <- 0, contPares <- 0, somaImpares <- 0
+
+	ESCREVER("Introduza um número:")
+	LER(num)
+	
+	ENQUANTO(num > 0) FAZER
+  
+		SE(numero MOD 2 == 0)
+			contPares <- contPares + 1
+			SENÃO
+			contImpares <- contImpares + 1
+			somaImpares <- somaImpares + num
+		FIMSE
+		
+		ler(num)
+		
+	FIMENQUANTO
+  
+	SE( (contPares+contImpares) = 0)
+		ESCREVER("Não forram introduzidos numeros")
+		
+		SENAO
+			ESCREVER("Percentagem de numeros pares:", (contPares/(contPares+contImpares))*100, "%")
+			
+			SE(contImpares = 0)
+				ESCREVER("Não foram introduzidos numeros impares")
+				
+				SENAO
+				ESCREVER("Média dos numeros impares:", somaImpares/contImpares)
+			FIMSE
+	FIMSE		
+FIM			
+
+
+--- EX4	---
+
+ED:
+	min , max, i INTEIRO
+	lista LISTA
+	
+ALG:
+
+INICIO
+
+	lista = ''
+	
+	REPETIR
+		ESCREVER("Introduza os limites válidos do intervalo")
+		LER(min,max)
+		
+	ENQUANTO(min >= max)
+	
+	PARA( i = min, i < max, i= i+1)
+		SE(i MOD2 = 0 AND i MOD3 = 0)
+			lista = lista + igual
+	FIMPARA	
+	
+	ESCREVER("Numeros maiores que", min, "e menores que ", max," multiplos de 3 e pares:", lista)
+
+FIM
+
+--- Ex5 ---
+
+ED:
+	min , max, i INTEIRO
+	lista LISTA
+	
+ALG:
+
+INICIO
+
+	lista = ''
+	
+	REPETIR
+		ESCREVER("Introduza os limites válidos do intervalo")
+		LER(min,max)
+		
+	ENQUANTO(min >= max)
+	
+	PARA( i = max, i > min, i= i-1)
+		SE(i MOD 2 != 0 AND i MOD 5 = 0)
+			lista <- lista + igual
+	FIMPARA	
+	
+	ESCREVER("Numeros maiores que", min, "e menores que ", max," multiplos de 5 e impares:", lista)
+
+FIM
+
+--- EX6 ---
+
+ED:
+	minimo, soma, num, somaMax INTEIRO
+	
+ALG:
+
+INICIO
+	
+	REPETE
+		ESCREVER("Introduza o limite máximo da soma:")
+		LER(somaMax)
+	
+	ENQUANTO(somaMax < 0)
+	
+	minimo <- somaMax
+	
+	REPETE
+		ESCREVER("Insira um numero positivo:")
+		LER(num)
+		
+		SE(num > 0)
+				soma <- soma + num
+				SE(num < minimo)
+					minimo <- num
+				FIMSE
+		FIMSE
+		
+	ENQUANTO(soma < somaMax)
+	
+	ESCREVER("O valor minimo inserido foi:", minimo)
+	
+FIM
+
+-- EX7 --
+
+ED:
+	salBase, salTotal REAL
+	numFunc, horasExtra INTEIRO
+	
+ALG:
+
+INICIO
+
+	salTotal <- 0, numFunc <- 0
+
+	REPETE
+	
+		REPETE
+			ESCREVER("Introduza o salário base.")
+			LER(salBase)
+			
+		ENQUANTO(salBase <= 0)
+	
+		ESCREVER("Introduza o numero de horas extraortinárias.")
+		LER(horasExtra)
+		
+		numFunc <- numFunc +1
+	
+		SE(horasExtra >= 0)
+			ESCREVER("Novo salário:", salBase + (salBase*0,02))
+			salTotal <- salTotal + (salBase + (salBase*0,02))
+		FIMSE
+		
+	ENQUANTO( horasExtra != -1)
+	
+	ESCREVER("Média de salários:", salTotal/numFunc)
+	
+FIM
+
+--- EX8 ---
+
+ED:
+	maximo, soma, num, somaMin INTEIRO
+	
+ALG:
+
+INICIO
+	
+	REPETE
+		ESCREVER("Introduza o limite minimo da soma:")
+		LER(somaMin)
+	
+	ENQUANTO(somaMin < 0)
+	
+	maximo <- 0
+	
+	REPETE
+		ESCREVER("Insira um numero positivo:")
+		LER(num)
+		
+		SE(num > 0)
+				soma <- soma + num
+				SE(num > maximo)
+					maximo <- num
+				FIMSE
+		FIMSE
+		
+	ENQUANTO(soma < somaMin)
+	
+	ESCREVER("O valor maximo inserido foi:", maximo)
+	
+FIM
+
+--- EX9 ---
+ED:
+	a, b, c, re1, im1, re2 REAL
+	n, i INTEIRO
+	
+ALG:
+
+INICIO
+	
+	REPETIR
+		ESCREVER("Quantas equações são para calcular?")
+		LER(n)
+	ENQUANTO( n<0 )
+	
+	PARA(i <- 0, i < n, i <- i+1)
+		ESCREVER("Introduza os valores dos coeficientes da equação ax^2+bx+c=0")
+		LER(a, b, c)
+		
+		SE ( a = 0) //eq. 1º grau
+			ESCREVER("Raiz da equação:", -c/b)
+			
+			SENAO
+				SE(b*b-4*a*c > 0) // 2 raizes reais
+					re1 <- (-b-raiz(b*b-4*a*c))/2*a*c
+					re2 <- (-b+raiz(b*b-4*a*c))/2*a*c
+					
+					ESCREVER("Raizes da equação:", re1, re2)
+					
+					SENAO
+						SE(b*b-4*a*c = 0) // raiz dupla
+							raiz1 <- -b/2*a
+							ESCREVER("Raiz dupla da equação:", re1)
+							
+							SENAO // raizes imginarias
+								re1 <- -b/2*a
+								im1 <- raiz(-(b*b-4*a*c))/2*a
+								ESCREVER("Raizes da equação:", re1,"+/-", im1,"i")
+						FIMSE
+				FIMSE	
+		FIMSE
+	FIMPARA
+FIM
+
+--- EX 10 ---
+
+ED:
+	n, a, b, cont INTEIRO
+
+ALG:
+
+INICIO
+
+	REPETIR
+		ESCREVER("Insira um numero entre 1 e 20")
+		LER(n)
+	ENQUANTO( n < 1	OR n > 20)
+	
+	a <- 0
+	b <- n
+	cont <-0
+	
+	ENQUANTO( b >= n DIV 2) FAZER
+
+		ESCREVER(a, "+", b)
+		a <- a+1
+		b <- b-1
+		cont <- cont+1
+
+	FIMENQUANTO
+
+	ESCREVER("Foram encontradas", cont, "maneiras diferentes")
+
+FIM
